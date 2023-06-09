@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/style.css">
+    
+    <title>Document</title>
+</head>
+<body>
+    <h1>Buscando elementos</h1>
+    <p>Para encontrar um elemento basta usar "document.querySelector(elemento)"<p>
+    <p>O document serve para selecionar o documento HTML, e o querySelector ira buscar o elemento</p>
+    
+    <h2>Exemplo pratico:</h2>
+    <p>Aqui temos 3 botões e ao serem clicados soltam um som ou alerta</p>
+    
+    <button class="tecla_latido">Latido</button>
+    <button class="tecla_miado">Miado</button>
+    <button class="tecla_alerta">Mensagem de Alerta</button>
+    
+    <audio src="styles/latido.mp3" id="som_latido"></audio>
+    <audio src="styles/miado.mp3" id="som_miado"></audio>
+    
+    <pre>
+function tocaLatido() {
+    document.querySelector('#som_latido').play();
+}
+document.querySelector('.tecla_latido').onclick = tocaLatido;    
+    </pre>
+
+    <script src="main.js"></script>
+</body>
+</html>
