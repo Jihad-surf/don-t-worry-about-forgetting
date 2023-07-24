@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+    <title>Forgetting</title>
+</head>
+
+<body>
+    <h1>Bem Vindo ao Don't Worry About Forgetting !!!</h1>
+    <p>Essa é uma comunidade, onde você pode criar um projeto com suas anotações e tambêm pode visualizar as anotações de outras pessoas</p>
+    
+    <h1>Crie sua anotação:</h1>
+    <div>
+      <button onclick="bold()">Negrito</button>
+      <button onclick="italic()">Itálico</button>
+      <button onclick="underline()">Sublinhado</button>
+      <button onclick="unorderedList()">Lista de Bolinhas</button>
+      <button onclick="orderedList()">Lista Numerada</button>
+      <button onclick="alignLeft()">Alinhar à Esquerda</button>
+      <button onclick="alignCenter()">Centralizar</button>
+      <button onclick="resetFont()">Fonte Padrão</button>
+      <button onclick="increaseFont()">Aumentar Fonte</button>
+      <button onclick="decreaseFont()">Diminuir Fonte</button>
+      <input type="file" id="imgInput" accept="image/*">
+      <button onclick="insertImage()">Inserir Imagem</button>
+    </div>
+    <div id="editor" contenteditable="true"></div>
+  
+    <script>
+      function execCommandWithArg(command, arg) {
+        document.execCommand(command, false, arg);
+      }
+  
+      function bold() {
+        execCommandWithArg("bold");
+      }
+  
+      function italic() {
+        execCommandWithArg("italic");
+      }
+  
+      function underline() {
+        execCommandWithArg("underline");
+      }
+  
+      function unorderedList() {
+        execCommandWithArg("insertUnorderedList");
+      }
+  
+      function orderedList() {
+        execCommandWithArg("insertOrderedList");
+      }
+      function alignCenter() {
+      document.execCommand("justifyCenter");
+    }
+  
+      function alignLeft() {
+      document.execCommand("justifyLeft");
+    }
+
+      function resetFont() {
+        document.execCommand("fontSize", false, "3"); // You can change "3" to the default font size you want
+      }
+  
+      function increaseFont() {
+        execCommandWithArg("fontSize", "5");
+      }
+  
+      function decreaseFont() {
+        execCommandWithArg("fontSize", "1");
+      }
+  
+      function insertImage() {
+        const imgURL = prompt("Digite a URL da imagem ou cole a imagem aqui:");
+        if (imgURL) {
+          execCommandWithArg("insertImage", imgURL);
+        }
+      }
+  
+      document.getElementById("imgInput").addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (event) {
+            const dataURL = event.target.result;
+            execCommandWithArg("insertImage", dataURL);
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+  
+    </script>
+</body>
+
+</html>

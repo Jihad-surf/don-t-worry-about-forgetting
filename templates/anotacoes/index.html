@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+    <title>Forgetting</title>
+</head>
+
+<body>
+    <h1>Bem Vindo ao Don't Worry About Forgetting !!!</h1>
+    <p>Essa é uma comunidade, onde você pode criar um projeto com suas anotações e tambêm pode visualizar as anotações de outras pessoas</p>
+
+    <a href="{% url 'minhasanotacoes' %}">Minhas anotações</a>
+    <input type="text" placeholder="Pesquisar">
+
+    <section>
+        <ul>
+            <li>Selenium</li>
+            <li>Python</li>
+            <li>Photoshop</li>
+        </ul>
+        <button>Criar novo Tópico</button>
+    </section>
+
+</body>
+
+</html>
